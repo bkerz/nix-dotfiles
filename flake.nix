@@ -1,34 +1,53 @@
 	{
-  description = "SergioRibera NixOS System Configuration";
+  description = "Baker";
   outputs = inputs:
-    inputs.flake-parts.lib.mkFlake
-    {
-      inherit inputs;
-    }
-    {
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
-      imports = [./hosts];
+
+      imports = [./home/users ./hosts];
+
       perSystem = {
         config,
         pkgs,
+        system,
         ...
       }: {
-        devShells.default = pkgs.mkShell {
-          packages = [pkgs.alejandra pkgs.git];
-          name = "bkerz";
-          DIRENV_LOG_FORMAT = "";
+        devShells = {
+          default = pkgs.mkShell {
+            packages = [pkgs.alejandra pkgs.git];
+            name = "nixland";
+            DIRENV_LOG_FORMAT = "";
+          };
+
+					godot = import ./shells/godot.nix {inherit system inputs;};
+					 # godot = pkgs.mkShell {
+						#  nativeBuildInputs = with pkgs; [
+						# 	unzip
+						# 	zip
+						#  ];
+						#  packages = with pkgs; [
+						#  	alejandra
+						# 	git
+						# 	(import ./shells/der.nix)
+						#  ];
+					 # };
         };
         # Nix Formatter
         formatter = pkgs.alejandra;
       };
     };
-
   inputs = {
     fenix = {
         url = "github:nix-community/fenix";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+		rust-overlay.url = "github:oxalica/rust-overlay";
     flake-parts.url = "github:hercules-ci/flake-parts";
+		agenix = {
+			url = "github:ryantm/agenix";
+			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.home-manager.follows = "hm";
+		};
     hm = {
       url = "github:nix-community/home-manager";
 	    inputs.nixpkgs.follows = "nixpkgs";
