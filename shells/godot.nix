@@ -1,19 +1,16 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
-
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
+		inputs,
+		system,
   }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
+    let
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
 
-      version = "4.2.1";
+      version = "4.3-dev5";
       godot-stable = pkgs.fetchurl {
-        url = "https://github.com/godotengine/godot/releases/download/${version}-stable/Godot_v${version}-stable_linux.x86_64.zip";
-        hash = "sha256-hjEannW3RF60IVMS5gTfH2nHLUZBrz5nBJ4wNWrjdmA=";
+        # url = "https://github.com/godotengine/godot/releases/download/${version}-stable/Godot_v${version}-stable_linux.x86_64.zip";
+				url = "https://github.com/godotengine/godot-builds/releases/download/${version}/Godot_v${version}_linux.x86_64.zip";
+        # hash = "sha256-hjEannW3RF60IVMS5gTfH2nHLUZBrz5nBJ4wNWrjdmA=";
+				hash = "sha256-I/T4kuCYM2d6yL924guxlBUve0NJBeQ1ouEE/IIbWqU=";
       };
 
       buildInputs = with pkgs; [
@@ -40,8 +37,8 @@
       ];
 
       godot-unwrapped = pkgs.stdenv.mkDerivation {
+				name = "godot";
         pname = "godot";
-        version = "4.2.1";
 
         src = godot-stable;
         nativeBuildInputs = with pkgs; [unzip autoPatchelfHook];
@@ -56,7 +53,7 @@
 
         installPhase = ''
           mkdir -p $out/bin
-          cp source/Godot_v${version}-stable_linux.x86_64 $out/bin/godot
+          cp source/Godot_v${version}_linux.x86_64 $out/bin/godot
         '';
       };
 
@@ -65,9 +62,10 @@
         targetPkgs = pkgs: buildInputs ++ [godot-unwrapped];
         runScript = "godot";
       };
-    in {
-      devShell = pkgs.mkShell {
+    in 
+      pkgs.mkShell {
         buildInputs = [godot-bin];
-      };
-    });
+				packages = with pkgs; [
+					tmux
+				];
 }

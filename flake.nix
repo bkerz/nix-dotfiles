@@ -20,17 +20,6 @@
           };
 
 					godot = import ./shells/godot.nix {inherit system inputs;};
-					 # godot = pkgs.mkShell {
-						#  nativeBuildInputs = with pkgs; [
-						# 	unzip
-						# 	zip
-						#  ];
-						#  packages = with pkgs; [
-						#  	alejandra
-						# 	git
-						# 	(import ./shells/der.nix)
-						#  ];
-					 # };
         };
         # Nix Formatter
         formatter = pkgs.alejandra;
