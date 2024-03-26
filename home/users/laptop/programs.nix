@@ -19,7 +19,7 @@
 
 		zsh = {
 			enable = true;
-			enableAutosuggestions = true;
+			autosuggestion.enable = true;
 			dotDir = ".config/zsh";
 			autocd = true;
 			syntaxHighlighting = {
@@ -95,6 +95,7 @@
 				gapa="git add -p";
 				vim="";
 			 	gnvim="nvim --listen 127.0.0.1:55432 .";
+			 	dev-godot="nix develop ~/nix-dotfiles#godot -c zsh; cd ~/dev/games";
 		};
 		};
 
