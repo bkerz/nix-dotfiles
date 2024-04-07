@@ -1,8 +1,20 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
+		delta
+		nil
+		lua-language-server
     # Js
     bun
     nodejs
+		deno
+		nodePackages.typescript-language-server
+		nodePackages.vscode-json-languageserver
+		biome
+		nodePackages.tailwindcss
+		nodePackages.prettier
+		nodePackages."@tailwindcss/language-server"
+		nodePackages.vscode-html-languageserver-bin
+		nodePackages.vscode-css-languageserver-bin
 
     # C/C++ Develoment
     gcc_multi
@@ -13,16 +25,17 @@
     dotter
 		ripgrep
 		rustc
-		rustfmt
-		rust-analyzer
-		cargo
-    cargo-leptos
-    leptosfmt
-    trunk
-    cargo-make
-    cargo-expand
-    cargo-generate
-    cargo-dist
+		fenix.complete.toolchain
+		# rustfmt
+		# rust-analyzer
+		# cargo
+	 	# cargo-leptos
+	 	# leptosfmt
+	 	# trunk
+	 	# cargo-make
+	 	# cargo-expand
+	 	# cargo-generate
+	 	# cargo-dist
 
     # python
     python3
