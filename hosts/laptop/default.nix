@@ -34,6 +34,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+	hardware.bluetooth.enable = true;
 	services.blueman.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.

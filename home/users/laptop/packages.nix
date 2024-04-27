@@ -18,6 +18,10 @@
 
     # C/C++ Develoment
     gcc_multi
+		ccls
+		rocmPackages.llvm.clang-tools-extra
+		scons
+		pkg-config
 
     # Rust Develoment
 		lld
@@ -54,6 +58,7 @@
 
     # Bluetooth
     bluez
+		bluez-tools
     blueman
 
     # Browser
@@ -74,11 +79,20 @@
 
     # Discord
     vesktop
+		discord
 		xwaylandvideobridge
 
     #Laziness
 		steam
 		spotify
+
+		#Gnome
+		gnomeExtensions.dash-to-dock
+
+		godot_4
+    brave
+    neovim
+    alacritty
 
   ];
 }
