@@ -79,12 +79,15 @@
     easyeffects
 
     # Discord
+		discord
     vesktop
 		xwaylandvideobridge
 
     #Laziness
 		steam
 		spotify
+		vulkan-loader
+		vulkan-tools
 
   ];
 }
