@@ -24,5 +24,20 @@
 				inputs.agenix.nixosModules.default
 			];
 		};
+		pc = nixosSystem {
+			inherit specialArgs;
+			modules =
+				desktop
+			++ [
+				./pc
+				{
+					home-manager = {
+						users.bkerz.imports = homeImports."bkerz@pc";
+						extraSpecialArgs = {inherit inputs;};
+					};
+				}
+				inputs.agenix.nixosModules.default
+			];
+		};
 	};
 }

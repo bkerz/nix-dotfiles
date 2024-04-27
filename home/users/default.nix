@@ -13,6 +13,10 @@
 			../.
 			./laptop
 		];
+		"bkerz@pc" = [
+			../.
+			./pc
+		];
 	};
 	inherit (inputs.hm.lib) homeManagerConfiguration;
 
@@ -24,6 +28,10 @@ in {
 		homeConfiguration = {
 			"bkerz@laptop" = homeManagerConfiguration {
 				modules = homeImports."bkerz@laptop";
+				inherit pkgs extraSpecialArgs;
+			};
+			"bkerz@pc" = homeManagerConfiguration {
+				modules = homeImports."bkerz@pc";
 				inherit pkgs extraSpecialArgs;
 			};
 		};
