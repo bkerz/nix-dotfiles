@@ -1,4 +1,10 @@
 { pkgs, config, ... }: {
+	# gtk = {
+	# 	enable = true;
+	# 	cursorTheme.name = "Adwaita";
+	# 	cursorTheme.package = pkgs.gnome.adwaita-icon-theme;
+	# };
+		
   programs = {
     ssh.enable = true;
     gpg = {
@@ -9,6 +15,8 @@
 		starship = {
 			enable = true;
 		};
+
+		
 
 		git = {
 			enable = true;
