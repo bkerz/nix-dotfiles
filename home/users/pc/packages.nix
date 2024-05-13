@@ -1,5 +1,15 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:{
   home.packages = with pkgs; [
+	obs-studio-plugins.obs-backgroundremoval
+		zip
+		unzip
+		minecraft
+		lorien
+		wine64
+		krita
+		opentabletdriver
+		fontconfig 
+		xorg.libX11
 		alacritty
 		brave
 		godot_4
