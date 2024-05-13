@@ -7,8 +7,10 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configuration.nix		
     ];
+
+
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -33,13 +35,11 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-	services.xserver.displayManager.defaultSession = "plasmax11";
-	services.desktopManager.plasma6.enable = true;
+   services.xserver.displayManager.sddm.enable = true;
+	 services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -176,6 +176,7 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+	hardware.opentabletdriver.enable = true;
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
@@ -183,6 +184,7 @@
   hardware.nvidia = {
 
     nvidiaSettings = true;
+		modesetting.enable = true;
     # # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
   };

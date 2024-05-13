@@ -26,12 +26,18 @@
       };
     };
   inputs = {
-    fenix = {
-        url = "github:nix-community/fenix";
-    };
+		fenix = {                                                                         
+			url = "github:nix-community/fenix";                                           
+		};
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-		rust-overlay.url = "github:oxalica/rust-overlay";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+		rust-overlay = {
+			url = "github:oxalica/rust-overlay";
+	    inputs.nixpkgs.follows = "nixpkgs";
+		};
+    flake-parts = {
+			url = "github:hercules-ci/flake-parts";
+	    inputs.nixpkgs.follows = "nixpkgs";
+		};
 		agenix = {
 			url = "github:ryantm/agenix";
 			inputs.nixpkgs.follows = "nixpkgs";

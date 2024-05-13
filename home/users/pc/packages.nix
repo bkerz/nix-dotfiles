@@ -26,12 +26,15 @@
     gcc_multi
 
     # Rust Develoment
+		pkg-config
+		alsa-lib
 		lld
 		mold
     dotter
 		ripgrep
-		rustc
-		fenix.complete.toolchain
+		# rust
+		# rustc
+		fenix.stable.toolchain
 		# rustfmt
 		# rust-analyzer
 		# cargo
@@ -57,10 +60,6 @@
     neofetch
     xdg-utils
     wev
-
-    # Bluetooth
-    bluez
-    blueman
 
     # Browser
 		# already defined in configuration.nix
@@ -88,6 +87,9 @@
 		spotify
 		vulkan-loader
 		vulkan-tools
+		tmux
+		dotter
+		aseprite
 
   ];
 }

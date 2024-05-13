@@ -96,13 +96,7 @@
   #];
 
   environment.systemPackages = with pkgs; [
-		godot_4
 		git
-    brave
-    neovim
-    alacritty
-    gcc
-    clang
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
