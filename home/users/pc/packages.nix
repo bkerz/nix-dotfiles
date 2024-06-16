@@ -1,11 +1,21 @@
 { pkgs, lib, ... }:{
   home.packages = with pkgs; [
-	obs-studio-plugins.obs-backgroundremoval
+		nodePackages.pnpm
+		audacity
+		qemu
+		winetricks
+		cargo-watch
+		xclip
+		reaper
+		wineWowPackages.stagingFull
+		yabridge
+		yabridgectl
+		lmms
+		ardour
+		dust
 		zip
 		unzip
-		minecraft
 		lorien
-		wine64
 		krita
 		opentabletdriver
 		fontconfig 
@@ -13,7 +23,6 @@
 		alacritty
 		brave
 		godot_4
-		neovim
 		ripgrep
 
 		delta
@@ -44,7 +53,7 @@
 		ripgrep
 		# rust
 		# rustc
-		fenix.stable.toolchain
+		fenix.complete.toolchain
 		# rustfmt
 		# rust-analyzer
 		# cargo
@@ -77,7 +86,6 @@
     # GUI?
     pavucontrol
     font-manager
-    obs-studio
     screenkey
     poedit
 

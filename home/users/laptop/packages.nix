@@ -67,7 +67,6 @@
     # GUI?
     pavucontrol
     font-manager
-    obs-studio
     screenkey
     poedit
 

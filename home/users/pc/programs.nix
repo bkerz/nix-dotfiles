@@ -1,6 +1,21 @@
-{ pkgs, config, ... }: {
+{ pkgs, lib, config, ... }:with lib; let
+
+  cfg = config.programs.zoxide;
+
+  cfgOptions = concatStringsSep " " cfg.options;
+
+in {
   programs = {
+
 	 ssh.enable = true;
+
+	 obs-studio = {
+			enable = true;
+			plugins = with pkgs; [
+				obs-studio-plugins.obs-backgroundremoval
+			];
+		};
+
     gpg = {
       enable = true;
       homedir = "${config.xdg.dataHome}/gnupg";
@@ -15,6 +30,14 @@
 			userName = "Beicker Zambrano";
 			userEmail = "beicker998@gmail.com";
 			ignores = ["*~" "*.swp" ".direnv" "node_modules"];
+			lfs = {
+				enable = true;
+			};
+		};
+
+		neovim = {
+			enable = true;
+			defaultEditor = true;
 		};
 
 		zsh = {
@@ -48,7 +71,12 @@
 				ga="git add";
 			 	gnvim="nvim --listen  .";
 			 	dev-godot="nix develop ~/nix-dotfiles#godot -c zsh; cd ~/dev/games";
+			};
 		};
+
+		zoxide = {
+			enable = true;
+			enableZshIntegration = true;
 		};
 
 		
