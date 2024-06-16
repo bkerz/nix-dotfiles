@@ -11,6 +11,16 @@
     ];
 
 
+	#virtualisation
+	virtualisation.libvirtd.enable = true;
+	virtualisation.docker = {
+		enable = true;
+		rootless = {
+			enable = true;
+			  setSocketVariable = true;
+		};
+	};
+	programs.virt-manager.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -74,7 +84,7 @@
   users.users.bkerz = {
     isNormalUser = true;
     description = "bkerz";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       firefox
       kate
