@@ -84,14 +84,5 @@ in {
 
   };
 
-  # services = {
-  #   swayosd = import ../../../modules/swayosd { inherit pkgs; };
-  #
-  #   gpg-agent = {
-  #     enable = true;
-  #     enableSshSupport = true;
-  #     pinentryFlavor = "gnome3";
-  #   };
-  # };
 
 }
