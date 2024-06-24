@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:{
   home.packages = with pkgs; [
+		clang
 		nodePackages.pnpm
 		audacity
 		qemu
@@ -42,7 +43,7 @@
 		nodePackages.vscode-css-languageserver-bin
 
     # C/C++ Develoment
-    gcc_multi
+    # gcc_multi
 
     # Rust Develoment
 		pkg-config

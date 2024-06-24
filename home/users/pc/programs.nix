@@ -79,6 +79,10 @@ in {
 			enableZshIntegration = true;
 		};
 
+		rofi = {
+			enable = true;
+			theme = ../../../modules/rofi/rounded-nord-dark.rasi;
+		};
 		
 
 
