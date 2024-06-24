@@ -48,7 +48,8 @@
    services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-   services.xserver.displayManager.sddm.enable = true;
+   # services.xserver.displayManager.sddm.enable = true; -- deprecated
+	 services.displayManager.sddm.enable = true;
 	 services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
@@ -59,6 +60,11 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+	#memory lock
+	security.pam.loginLimits = [
+		{domain = "*"; type = "-"; item = "memlock"; value = "infinity";}
+	];
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -84,7 +90,7 @@
   users.users.bkerz = {
     isNormalUser = true;
     description = "bkerz";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" "video"];
     packages = with pkgs; [
       firefox
       kate
@@ -126,6 +132,11 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
+	nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 30d";
+	};
 
 
 # 	# Enable OpenGL
