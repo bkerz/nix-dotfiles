@@ -1,5 +1,17 @@
-{ pkgs, lib, ... }:{
+{ inputs, pkgs, lib, ... }:{
   home.packages = with pkgs; [
+		# unstable.neovim
+		xclip
+		obsidian
+		activitywatch
+		telegram-desktop
+		openrgb-with-all-plugins
+		gh
+		vlc
+		cmake
+		google-chrome
+		zls
+		zig
 		clang
 		nodePackages.pnpm
 		audacity
@@ -23,7 +35,6 @@
 		xorg.libX11
 		alacritty
 		brave
-		godot_4
 		ripgrep
 
 		delta
@@ -34,13 +45,11 @@
     nodejs
 		deno
 		nodePackages.typescript-language-server
-		nodePackages.vscode-json-languageserver
 		biome
 		nodePackages.tailwindcss
 		nodePackages.prettier
 		nodePackages."@tailwindcss/language-server"
-		nodePackages.vscode-html-languageserver-bin
-		nodePackages.vscode-css-languageserver-bin
+		vscode-langservers-extracted
 
     # C/C++ Develoment
     # gcc_multi
@@ -99,7 +108,6 @@
     # Discord
 		discord
     vesktop
-		xwaylandvideobridge
 
     #Laziness
 		steam
