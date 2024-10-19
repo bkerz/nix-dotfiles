@@ -84,7 +84,9 @@ in {
 			theme = ../../../modules/rofi/rounded-nord-dark.rasi;
 		};
 		
-
+		fd = {
+			enable = true;
+		};
 
   };
 
